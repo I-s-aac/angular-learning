@@ -1,0 +1,24 @@
+<mat-card>
+  <form [formGroup]="myForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+    <mat-card-subtitle>address</mat-card-subtitle>
+    <fieldset formGroupName="address">
+      <mat-form-field>
+        <mat-label>city</mat-label>
+        <input matInput formControlName="city" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>state</mat-label>
+        <input matInput formControlName="state" />
+      </mat-form-field>
+    </fieldset>
+  </form>
+</mat-card>
+<div>{{ myForm.getRawValue() | json }}</div>
