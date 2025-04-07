@@ -1,0 +1,75 @@
+<mat-card>
+  <mat-card-title>Employee Form</mat-card-title>
+  <mat-card-content>
+    <form (ngSubmit)="submitForm()" #empForm="ngForm">
+      <section>
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            placeholder="First Name"
+            required
+            name="firstName"
+            [(ngModel)]="model.firstName"
+            #firstName="ngModel"
+          />
+        </mat-form-field>
+        <mat-error *ngIf="!firstName.valid"> first name is required </mat-error>
+      </section>
+
+      <section>
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            placeholder="Last Name"
+            required
+            name="lastName"
+            [(ngModel)]="model.lastName"
+          />
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-checkbox required name="fulltime" [(ngModel)]="model.isFullTime"
+          >Full-time employee</mat-checkbox
+        >
+      </section>
+
+      <section>
+        <label>Payment Type:</label>
+        <mat-radio-group
+          required
+          name="payment"
+          [(ngModel)]="model.paymentType"
+        >
+          <mat-radio-button value="W2">W2</mat-radio-button>
+          <mat-radio-button value="1099">1099</mat-radio-button>
+        </mat-radio-group>
+      </section>
+
+      <section>
+        <mat-form-field>
+          <mat-select
+            placeholder="Primary Language"
+            name="language"
+            [(ngModel)]="model.primaryLanguage"
+          >
+            <mat-option value="English">English</mat-option>
+            <mat-option value="Spanish">Spanish</mat-option>
+            <mat-option value="French">French</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </section>
+
+      <button mat-raised-button color="primary" [disabled]="empForm.invalid">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title> Model </mat-card-title>
+  <mat-card-content>
+    <pre>{{ model | json }}</pre>
+  </mat-card-content>
+</mat-card>
